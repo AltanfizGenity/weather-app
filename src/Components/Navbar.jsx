@@ -5,8 +5,8 @@ import { WeatherContext } from "../App";
 
 function Navbar() {
   const { setIsSearchBoxOpen, setIsForecastBoxOpen } = useContext(WeatherContext);
-  const openSearchBox = () => null;
-  const openForecastBox = () => null;
+  const openSearchBox = () => setIsSearchBoxOpen(true);
+  const openForecastBox = () => setIsForecastBoxOpen(true);
 
   return (
     <nav id="navbar">

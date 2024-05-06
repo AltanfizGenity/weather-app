@@ -4,10 +4,9 @@ import { createContext, useCallback, useEffect, useMemo, useState } from "react"
 import { Flex, MantineProvider } from "@mantine/core";
 import Navbar from "./Components/Navbar";
 import Weather from "./Components/Weather";
-
-// import WeatherSearchBox from "./Components/Weather/WeatherSearchBox"?;
-// import { clampMax } from "../../utils/number.js";
+import WeatherSearchBox from "./Components/WeatherSearchBox.jsx";
 // import ForecastBox from "./Components/Weather/Forecast/ForecastBox.jsx";
+import { clampMax } from "./utils/number.js";
 
 const url = "https://api.weatherapi.com/v1/";
 const apiKey = "629c877cae6f41e480f72948242704";
@@ -67,7 +66,7 @@ function App() {
         <WeatherContext.Provider value={contextData}>
           <Flex direction={"column"} h={"100%"}>
             <Navbar />
-            {/* <WeatherSearchBox /> */}
+            <WeatherSearchBox />
             {/* <ForecastBox /> */}
             <Weather />
           </Flex>
