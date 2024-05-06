@@ -1,18 +1,18 @@
-import { Button, Divider, Drawer, DrawerHeader, DrawerRoot, Flex, Title } from "@mantine/core";
-import React, { useContext, useState } from "react";
-import { WeatherContext } from "../App";
+import { Button, Divider, Drawer, Flex, Title } from "@mantine/core";
+import React, { useState } from "react";
 import { getWindDirection } from "../data/weather";
 import { icon } from "../data/IconData";
 import Icon from "./Icon";
 import ForecastItem from "./ForecastItem";
 import Temperature from "./Temperature";
 import "../forecast.css";
+import { useWeatherContext } from "../App";
 
 // Adjusting API | We using free tier
 const forecastDayRanges = [3, 5, 7];
 
 function ForecastBox() {
-  const { forecastData, isForecastBoxOpen, setIsForecastBoxOpen } = useContext(WeatherContext);
+  const { forecastData, isForecastBoxOpen, setIsForecastBoxOpen } = useWeatherContext();
   const [forecastRange, setForecastRange] = useState(3);
 
   if (!forecastData) {

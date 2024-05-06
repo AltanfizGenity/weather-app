@@ -1,6 +1,6 @@
 import "./App.css";
 import "@mantine/core/styles.css";
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useState } from "react";
 import { Flex, MantineProvider } from "@mantine/core";
 import Navbar from "./Components/Navbar";
 import Weather from "./Components/Weather";
@@ -26,7 +26,6 @@ function App() {
       const data = await response.json();
       setWeatherData(data);
     } catch (error) {
-      console.log(error);
       throw new Error(error);
     }
   });
@@ -74,6 +73,14 @@ function App() {
       </main>
     </MantineProvider>
   );
+}
+
+export function useWeatherContext() {
+  const context = useContext(WeatherContext);
+  if (context === undefined) {
+    throw new Error("Something wrong with this context, Check useWeatherContext hook code");
+  }
+  return context;
 }
 
 export default App;

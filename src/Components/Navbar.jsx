@@ -1,10 +1,10 @@
 import { Flex } from "@mantine/core";
-import React, { useContext } from "react";
+import React from "react";
 import { ForecastButton, SearchButton } from "./Buttons";
-import { WeatherContext } from "../App";
+import { useWeatherContext } from "../App";
 
 function Navbar() {
-  const { setIsSearchBoxOpen, setIsForecastBoxOpen } = useContext(WeatherContext);
+  const { setIsSearchBoxOpen, setIsForecastBoxOpen } = useWeatherContext();
   const openSearchBox = () => setIsSearchBoxOpen(true);
   const openForecastBox = () => setIsForecastBoxOpen(true);
 
