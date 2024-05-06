@@ -1,42 +1,82 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+body {
+  line-height: normal;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+#weather-app {
+  width: 100%;
+  height: 100vh;
+  padding: 5rem 7rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#weather {
+  height: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.temperature {
+  position: relative;
 }
 
-.card {
-  padding: 2em;
+.temperature .degree {
+  position: absolute;
 }
 
-.read-the-docs {
-  color: #888;
+.location {
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+.weather-date {
+  color: #909090;
+}
+
+.weather-details {
+  gap: 3rem;
+}
+
+.weather-details .detail {
+  justify-content: center;
+  align-items: center;
+}
+
+.weather-details .detail svg {
+  width: 30px;
+  height: 30px;
+}
+
+.icon-btn {
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  color: white;
+}
+
+.mantine-Drawer-content {
+  padding: 2.5rem;
+}
+
+.searchbox-search-btn {
+  width: 50px;
+  height: 50px;
+}
+
+.location-item {
+  cursor: pointer;
+  padding: 1rem;
+}
+
+.location-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.icon svg {
+  width: 24px;
 }
