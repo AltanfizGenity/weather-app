@@ -1,7 +1,7 @@
 import { Button, Divider, Drawer, Flex, Title } from "@mantine/core";
 import React, { useState } from "react";
 import { getWindDirection } from "../data/weather";
-import { icon } from "../data/IconData";
+import { icon, weatherIcon } from "../data/IconData";
 import Icon from "./Icon";
 import ForecastItem from "./ForecastItem";
 import Temperature from "./Temperature";
@@ -55,8 +55,10 @@ function ForecastCurrent({ current }) {
   return (
     <Flex className="forecast-current" justify={"center"} align={"center"} direction={"column"} gap={"md"}>
       <Temperature fontSize={"7rem"} temp_c={temp_c} />
-      <Flex className="forecast-current-info">
-        <div className="icon"></div>
+      <Flex className="forecast-current-info" gap={"md"}>
+        <div className="icon">
+          <Icon>{weatherIcon.wind}</Icon>
+        </div>
         <div className="info">{`${windDirection}, ${wind_kph} km/h`}</div>
       </Flex>
     </Flex>

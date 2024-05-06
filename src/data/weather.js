@@ -41,6 +41,18 @@ export function getWindDirection(windCode) {
       windDirection = "East-northeast";
       break;
     }
+    case "WSW": {
+      windDirection = "West-south-west";
+      break;
+    }
+    case "NNE": {
+      windDirection = "North of north-east";
+      break;
+    }
+    case "ESE": {
+      windDirection = "East of south-east";
+      break;
+    }
     default:
       console.log(windCode);
       windDirection = `code ${windCode} is not defined`;

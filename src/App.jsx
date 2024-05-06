@@ -6,7 +6,6 @@ import Navbar from "./Components/Navbar";
 import Weather from "./Components/Weather";
 import WeatherSearchBox from "./Components/WeatherSearchBox.jsx";
 import ForecastBox from "./Components/ForecastBox.jsx";
-import { clampMax } from "./utils/number.js";
 
 const url = "https://api.weatherapi.com/v1/";
 const apiKey = "629c877cae6f41e480f72948242704";
