@@ -1,11 +1,11 @@
 import "./App.css";
 import "@mantine/core/styles.css";
-import { createContext, useCallback, useEffect, useMemo, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { Flex, MantineProvider } from "@mantine/core";
 import Navbar from "./Components/Navbar";
 import Weather from "./Components/Weather";
 import WeatherSearchBox from "./Components/WeatherSearchBox.jsx";
-// import ForecastBox from "./Components/Weather/Forecast/ForecastBox.jsx";
+import ForecastBox from "./Components/ForecastBox.jsx";
 import { clampMax } from "./utils/number.js";
 
 const url = "https://api.weatherapi.com/v1/";
@@ -67,7 +67,7 @@ function App() {
           <Flex direction={"column"} h={"100%"}>
             <Navbar />
             <WeatherSearchBox />
-            {/* <ForecastBox /> */}
+            <ForecastBox />
             <Weather />
           </Flex>
         </WeatherContext.Provider>

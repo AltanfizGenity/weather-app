@@ -1,0 +1,36 @@
+.forecast-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* -------------------------------------------------------------------- */
+.forecast-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.forecast-info-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.forecast-condition-icon {
+  width: 48px;
+  height: 48px;
+  background-color: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.forecast-condition-icon svg {
+  width: 24px;
+}
+
+.forecast-item-condition {
+  color: #909090;
+}
+/* -------------------------------------------------------------------- */
