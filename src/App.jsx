@@ -3,6 +3,7 @@ import "@mantine/core/styles.css";
 import { Flex, MantineProvider } from "@mantine/core";
 import { createContext } from "react";
 import Navbar from "./Components/Navbar";
+import Weather from "./Components/Weather";
 
 export const WeatherContext = createContext(null);
 
@@ -15,7 +16,7 @@ function App() {
             <Navbar />
             {/* <WeatherSearchBox /> */}
             {/* <ForecastBox /> */}
-            {/* <Weather /> */}
+            <Weather />
           </Flex>
         </WeatherContext.Provider>
       </main>
