@@ -1,0 +1,30 @@
+/* 
+This style is to override exiting Mantine stylesheet for custom styling WeatherApp
+*/
+
+.mantine-Drawer-content {
+  flex: none !important;
+  width: clamp(500px, 800px, 100%);
+  background: rgba(200, 200, 200, 0.1) !important;
+  backdrop-filter: blur(50px);
+}
+
+.mantine-Drawer-content .mantine-Input-input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.mantine-Drawer-content .mantine-Input-input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.mantine-Drawer-header {
+  background: transparent !important;
+}
+
+.mantine-Drawer-content .mantine-Divider-root {
+  border-color: rgba(255, 255, 255, 0.2);
+}

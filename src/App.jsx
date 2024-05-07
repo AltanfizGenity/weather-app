@@ -1,4 +1,5 @@
 import "./App.css";
+import "./mantine-override.css";
 import "@mantine/core/styles.css";
 import {
   createContext,
