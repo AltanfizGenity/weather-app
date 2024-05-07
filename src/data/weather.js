@@ -1,3 +1,9 @@
+import cloudy from "../assets/cloudy.jpg";
+import rainy from "../assets/rainy.jpg";
+import snowy from "../assets/snowy.jpg";
+import misty from "../assets/misty.jpg";
+import thunderstorm from "../assets/thunderstorm.jpg";
+
 export function getWindDirection(windCode) {
   let windDirection;
   switch (windCode) {
@@ -58,4 +64,46 @@ export function getWindDirection(windCode) {
       windDirection = `code ${windCode} is not defined`;
   }
   return windDirection;
+}
+
+const backgroundImageData = {
+  cloudy,
+  misty,
+  rainy,
+  snowy,
+  thunderstorm,
+};
+
+/**
+ *
+ * @param {String} condition
+ * @returns ImageObject
+ */
+export function getWeatherBackgroundImage(condition) {
+  const image = null;
+  condition = condition.toLowerCase();
+
+  if (!condition) {
+    throw new Error("unexpected condition value, check condition args");
+  }
+
+  switch (condition) {
+    case "mist":
+      image = misty;
+      break;
+    case "light rain":
+    case "heavy rain":
+      image = rainy;
+      break;
+    case "cloudy":
+    case "partly cloudy":
+    case "clear":
+    case "sunny":
+      image = cloudy;
+      break;
+
+    default:
+      break;
+  }
+  return image;
 }
