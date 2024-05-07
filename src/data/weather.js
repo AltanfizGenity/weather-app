@@ -1,9 +1,8 @@
-import cloudy from "../assets/cloudy.jpg";
-import rainy from "../assets/rainy.jpg";
-import snowy from "../assets/snowy.jpg";
-import misty from "../assets/misty.jpg";
-import thunderstorm from "../assets/thunderstorm.jpg";
+import { conditionData } from "./condition";
 
+/** This code need refactor or find better approach like create weather condition object data
+ *  For now we use this for testing and mobility to finish the project
+ */
 export function getWindDirection(windCode) {
   let windDirection;
   switch (windCode) {
@@ -66,44 +65,30 @@ export function getWindDirection(windCode) {
   return windDirection;
 }
 
-const backgroundImageData = {
-  cloudy,
-  misty,
-  rainy,
-  snowy,
-  thunderstorm,
-};
-
 /**
  *
- * @param {String} condition
+ * @param {Object} condition
  * @returns ImageObject
  */
 export function getWeatherBackgroundImage(condition) {
-  const image = null;
-  condition = condition.toLowerCase();
-
   if (!condition) {
-    throw new Error("unexpected condition value, check condition args");
+    return;
   }
 
-  switch (condition) {
-    case "mist":
-      image = misty;
-      break;
-    case "light rain":
-    case "heavy rain":
-      image = rainy;
-      break;
-    case "cloudy":
-    case "partly cloudy":
-    case "clear":
-    case "sunny":
-      image = cloudy;
-      break;
+  let image;
+  const { code } = condition;
 
-    default:
-      break;
-  }
+  conditionData.forEach((condition) => {
+    if (condition.code.includes(code)) {
+      image = condition.img;
+      return;
+    }
+  });
+
+  if (!image)
+    throw new Error(
+      "Can't found the image for condition code, check condition data instead"
+    );
+
   return image;
 }
