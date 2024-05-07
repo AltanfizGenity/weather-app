@@ -33,4 +33,7 @@
 .forecast-item-condition {
   color: #909090;
 }
-/* -------------------------------------------------------------------- */
+
+.range-btn.range-active {
+  background-color: rgba(255, 255, 255, 0.2);
+}

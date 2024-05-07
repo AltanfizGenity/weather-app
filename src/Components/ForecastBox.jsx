@@ -110,6 +110,7 @@ function ForecastNext(props) {
     >
       <ForecastNextHeader
         setForecastRange={setForecastRange}
+        forecastRange={forecastRange}
       />
       <ForecastNextContent
         {...{ forecast, forecastRange }}
@@ -118,7 +119,10 @@ function ForecastNext(props) {
   );
 }
 
-function ForecastNextHeader({ setForecastRange }) {
+function ForecastNextHeader({
+  setForecastRange,
+  forecastRange,
+}) {
   return (
     <Flex
       className="forecast-next-header"
@@ -142,6 +146,11 @@ function ForecastNextHeader({ setForecastRange }) {
               color="rgba(255, 255, 255, 1)"
               onClick={() => setForecastRange(range)}
               key={index}
+              className={`range-btn ${
+                range === forecastRange
+                  ? "range-active"
+                  : ""
+              }`}
             >
               {range} days
             </Button>
