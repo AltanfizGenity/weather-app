@@ -21,7 +21,7 @@ import { getWeatherBackgroundImage } from "./data/weather.js";
 
 const url = "https://api.weatherapi.com/v1/";
 const apiKey = "629c877cae6f41e480f72948242704";
-const initialLocation = "Jakarta";
+const initialLocation = "Helsinki";
 
 export const WeatherContext = createContext(null);
 

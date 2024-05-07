@@ -81,3 +81,8 @@ body {
 .icon svg {
   width: 24px;
 }
+
+.mantine-Drawer-content {
+  flex: none !important;
+  width: clamp(500px, 800px, 100%);
+}
