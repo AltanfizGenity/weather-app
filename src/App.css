@@ -10,6 +10,7 @@ body {
 
 #weather {
   height: 100%;
+  color: #fff;
 }
 
 .temperature {
@@ -26,7 +27,7 @@ body {
 }
 
 .weather-date {
-  color: #909090;
+  color: #ccc;
 }
 
 .weather-details {
@@ -50,7 +51,7 @@ body {
 }
 
 .icon-btn:hover {
-  color: white;
+  color: #fff;
 }
 
 .mantine-Drawer-content {
