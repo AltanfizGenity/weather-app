@@ -3,7 +3,6 @@ export function getCurrentDate() {
   const date = iDate.getDate();
   const day = iDate.getDay();
   const month = iDate.getMonth();
-  const year = iDate.getFullYear();
   return `${getDaysName(day)}, ${getMonthsName(month, true)} ${date}`;
 }
 
@@ -16,7 +15,7 @@ export function getCurrentDate() {
  * @returns String
  */
 export function getDateString(date, day, month, year) {
-  return `${getDaysName(day)}, ${getMonthsName(month, true)} ${date} ${year ? year : ""}`;
+  return `${getDaysName(day)}, ${getMonthsName(month, true)} ${date} ${year ? year : ''}`;
 }
 
 /**
@@ -27,7 +26,7 @@ export function getDateString(date, day, month, year) {
  */
 export function getMonthsName(monthIndex = 0, isAbbr = false) {
   if (monthIndex < 0 || monthIndex > 11) {
-    throw new Error("Month index is beyond limit, use 0 - 11 for month code");
+    throw new Error('Month index is beyond limit, use 0 - 11 for month code');
   }
   return isAbbr ? months[monthIndex].slice(0, 3) : months[monthIndex];
 }
@@ -40,7 +39,7 @@ export function getMonthsName(monthIndex = 0, isAbbr = false) {
 
 export function getDaysName(dayIndex = 0) {
   if (dayIndex < 0 || dayIndex > 11) {
-    throw new Error("Day index is beyond limit, use 0 - 6 for day code");
+    throw new Error('Day index is beyond limit, use 0 - 6 for day code');
   }
 
   return days[dayIndex];
@@ -55,5 +54,18 @@ function zeroPadTime(time = 0) {
   return time < 10 ? `0${time}` : time;
 }
 
-const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];

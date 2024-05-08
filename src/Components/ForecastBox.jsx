@@ -1,36 +1,25 @@
-import {
-  Button,
-  Divider,
-  Drawer,
-  Flex,
-  Title,
-} from "@mantine/core";
-import React, { useState } from "react";
-import { getWindDirection } from "../data/weather";
-import { icon, weatherIcon } from "../data/IconData";
-import Icon from "./Icon";
-import ForecastItem from "./ForecastItem";
-import Temperature from "./Temperature";
-import "../forecast.css";
-import { useWeatherContext } from "../App";
+import { Button, Divider, Drawer, Flex, Title } from '@mantine/core';
+import React, { useState } from 'react';
+import { getWindDirection } from '../data/weather';
+import { icon, weatherIcon } from '../data/IconData';
+import Icon from './Icon';
+import ForecastItem from './ForecastItem';
+import Temperature from './Temperature';
+import { useWeatherContext } from '../App';
+import '../styles/forecast.css';
 
 // Adjusting API | We using free tier
 const forecastDayRanges = [3, 5, 7];
 
 function ForecastBox() {
-  const {
-    forecastData,
-    isForecastBoxOpen,
-    setIsForecastBoxOpen,
-  } = useWeatherContext();
+  const { forecastData, isForecastBoxOpen, setIsForecastBoxOpen } = useWeatherContext();
   const [forecastRange, setForecastRange] = useState(3);
 
   if (!forecastData) {
     return <p>loading...</p>;
   }
 
-  const { location, forecast, current } =
-    forecastData || {};
+  const { location, forecast, current } = forecastData || {};
 
   return (
     <>
@@ -45,10 +34,11 @@ function ForecastBox() {
         <Drawer.Content>
           <Drawer.Header>
             <Drawer.Title>
-              <Flex gap={"sm"} align={"center"}>
-                <Icon className="location-icon">
-                  {icon.locationMarker}
-                </Icon>
+              <Flex
+                gap={'sm'}
+                align={'center'}
+              >
+                <Icon className="location-icon">{icon.locationMarker}</Icon>
                 <div className="location-name">{`${location.name}, ${location.country}`}</div>
               </Flex>
             </Drawer.Title>
@@ -57,7 +47,7 @@ function ForecastBox() {
           <Drawer.Body>
             <div
               className="forecast-body"
-              style={{ marginTop: "1rem" }}
+              style={{ marginTop: '1rem' }}
             >
               <ForecastCurrent current={current} />
               <Divider />
@@ -83,13 +73,19 @@ function ForecastCurrent({ current }) {
   return (
     <Flex
       className="forecast-current"
-      justify={"center"}
-      align={"center"}
-      direction={"column"}
-      gap={"md"}
+      justify={'center'}
+      align={'center'}
+      direction={'column'}
+      gap={'md'}
     >
-      <Temperature fontSize={"7rem"} temp_c={temp_c} />
-      <Flex className="forecast-current-info" gap={"md"}>
+      <Temperature
+        fontSize={'7rem'}
+        temp_c={temp_c}
+      />
+      <Flex
+        className="forecast-current-info"
+        gap={'md'}
+      >
         <div className="icon">
           <Icon>{weatherIcon.wind}</Icon>
         </div>
@@ -100,44 +96,41 @@ function ForecastCurrent({ current }) {
 }
 
 function ForecastNext(props) {
-  const { forecast, setForecastRange, forecastRange } =
-    props;
+  const { forecast, setForecastRange, forecastRange } = props;
   return (
     <Flex
       className="forecast-next"
-      direction={"column"}
-      gap={"lg"}
+      direction={'column'}
+      gap={'lg'}
     >
       <ForecastNextHeader
         setForecastRange={setForecastRange}
         forecastRange={forecastRange}
       />
-      <ForecastNextContent
-        {...{ forecast, forecastRange }}
-      />
+      <ForecastNextContent {...{ forecast, forecastRange }} />
     </Flex>
   );
 }
 
-function ForecastNextHeader({
-  setForecastRange,
-  forecastRange,
-}) {
+function ForecastNextHeader({ setForecastRange, forecastRange }) {
   return (
     <Flex
       className="forecast-next-header"
-      direction={"column"}
-      gap={"sm"}
-      justify={"center"}
-      align={"center"}
+      direction={'column'}
+      gap={'sm'}
+      justify={'center'}
+      align={'center'}
     >
-      <Title className="forecast-next-title" order={3}>
+      <Title
+        className="forecast-next-title"
+        order={3}
+      >
         The Next Days Forecast
       </Title>
       <Flex
         className="forecast-next-range"
-        align={"center"}
-        gap={"md"}
+        align={'center'}
+        gap={'md'}
       >
         {forecastDayRanges.map((range, index) => {
           return (
@@ -146,11 +139,7 @@ function ForecastNextHeader({
               color="rgba(255, 255, 255, 1)"
               onClick={() => setForecastRange(range)}
               key={index}
-              className={`range-btn ${
-                range === forecastRange
-                  ? "range-active"
-                  : ""
-              }`}
+              className={`range-btn ${range === forecastRange ? 'range-active' : ''}`}
             >
               {range} days
             </Button>
@@ -165,19 +154,17 @@ function ForecastNextContent({ forecast, forecastRange }) {
   return (
     <Flex
       className="forecast-next-content"
-      direction={"column"}
-      gap={"2rem"}
+      direction={'column'}
+      gap={'2rem'}
     >
-      {forecast.forecastday
-        .slice(0, forecastRange)
-        .map((forecastItem, index) => {
-          return (
-            <ForecastItem
-              key={index}
-              forecastItem={forecastItem}
-            />
-          );
-        })}
+      {forecast.forecastday.slice(0, forecastRange).map((forecastItem, index) => {
+        return (
+          <ForecastItem
+            key={index}
+            forecastItem={forecastItem}
+          />
+        );
+      })}
     </Flex>
   );
 }

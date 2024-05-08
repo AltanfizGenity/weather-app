@@ -1,9 +1,13 @@
-import React from "react";
-import { icon } from "../data/IconData";
+import React from 'react';
+import { icon } from '../data/IconData';
 
 function IconButton(props) {
   return (
-    <div aria-roledescription="icon-button" className="icon-btn" onClick={props.onClick}>
+    <div
+      aria-roledescription="icon-button"
+      className="icon-btn"
+      onClick={props.onClick}
+    >
       {props.children}
     </div>
   );
