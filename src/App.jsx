@@ -1,8 +1,8 @@
+import { useState } from 'react';
 import './styles/app.css';
 import './styles/mantine-override.css';
 import '@mantine/core/styles.css';
-import { createContext } from 'react';
-import { MantineProvider } from '@mantine/core';
+import { BackgroundImage, MantineProvider } from '@mantine/core';
 import AppContainer from './AppContainer.jsx';
 
 export const API_DATA = {
@@ -10,13 +10,17 @@ export const API_DATA = {
 };
 
 function App() {
+  const [image, setImage] = useState('');
+  const updateImage = (newImage) => setImage(newImage);
+
   return (
     <MantineProvider defaultColorScheme='dark'>
-      <main id='weather-app'>
-        <AppContainer />
-      </main>
+      <BackgroundImage src={image}>
+        <main id='weather-app'>
+          <AppContainer updateImage={updateImage} />
+        </main>
+      </BackgroundImage>
     </MantineProvider>
   );
 }
-
 export default App;

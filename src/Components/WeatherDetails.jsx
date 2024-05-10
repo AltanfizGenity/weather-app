@@ -1,7 +1,7 @@
 import React from 'react';
-import { useWeatherContext } from '../AppContainer';
 import { Flex } from '@mantine/core';
 import { weatherIcon } from '../data/IconData';
+import { useWeatherContext } from '../context/WeatherContext';
 
 function WeatherDetails() {
   const { weatherData } = useWeatherContext();

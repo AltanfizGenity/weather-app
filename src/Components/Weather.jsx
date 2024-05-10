@@ -3,7 +3,7 @@ import { getCurrentDate } from '../utils/date';
 import { Flex } from '@mantine/core';
 import Temperature from './Temperature';
 import WeatherDetails from './WeatherDetails';
-import { useWeatherContext } from '../AppContainer';
+import { useWeatherContext } from '../context/WeatherContext';
 
 function Weather() {
   const { weatherData } = useWeatherContext();

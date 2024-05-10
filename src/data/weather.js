@@ -1,4 +1,4 @@
-import { conditionData } from "./condition";
+import { conditionData } from './condition';
 
 /** This code need refactor or find better approach like create weather condition object data
  *  For now we use this for testing and mobility to finish the project
@@ -6,56 +6,56 @@ import { conditionData } from "./condition";
 export function getWindDirection(windCode) {
   let windDirection;
   switch (windCode) {
-    case "SW": {
-      windDirection = "South West";
+    case 'SW': {
+      windDirection = 'South West';
       break;
     }
-    case "SE": {
-      windDirection = "South East";
+    case 'SE': {
+      windDirection = 'South East';
       break;
     }
-    case "NW": {
-      windDirection = "North West";
+    case 'NW': {
+      windDirection = 'North West';
       break;
     }
-    case "NE": {
-      windDirection = "North East";
+    case 'NE': {
+      windDirection = 'North East';
       break;
     }
-    case "W": {
-      windDirection = "West";
+    case 'W': {
+      windDirection = 'West';
       break;
     }
-    case "N": {
-      windDirection = "North";
+    case 'N': {
+      windDirection = 'North';
       break;
     }
-    case "E": {
-      windDirection = "East";
+    case 'E': {
+      windDirection = 'East';
       break;
     }
-    case "S": {
-      windDirection = "South";
+    case 'S': {
+      windDirection = 'South';
       break;
     }
-    case "SSW": {
-      windDirection = "South-southwest";
+    case 'SSW': {
+      windDirection = 'South-southwest';
       break;
     }
-    case "ENE": {
-      windDirection = "East-northeast";
+    case 'ENE': {
+      windDirection = 'East-northeast';
       break;
     }
-    case "WSW": {
-      windDirection = "West-south-west";
+    case 'WSW': {
+      windDirection = 'West-south-west';
       break;
     }
-    case "NNE": {
-      windDirection = "North of north-east";
+    case 'NNE': {
+      windDirection = 'North of north-east';
       break;
     }
-    case "ESE": {
-      windDirection = "East of south-east";
+    case 'ESE': {
+      windDirection = 'East of south-east';
       break;
     }
     default:
@@ -85,10 +85,7 @@ export function getWeatherBackgroundImage(condition) {
     }
   });
 
-  if (!image)
-    throw new Error(
-      "Can't found the image for condition code, check condition data instead"
-    );
+  if (!image) throw new Error("Can't found the image for condition code, check condition data instead");
 
   return image;
 }

@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { createContext, useState } from 'react';
 import { Drawer, Flex, TextInput } from '@mantine/core';
 import { SearchButton } from './Buttons';
 import LocationItem from './LocationItem';
-import { useWeatherContext } from '../AppContainer';
+import { useWeatherContext } from '../context/WeatherContext';
+import { useStateContext } from '../context/StateContext';
 import cities from 'cities.json';
 
+export const weatherSearchContext = createContext(null);
+
 function WeatherSearchBox() {
-  const { isSearchBoxOpen, setIsSearchBoxOpen, fetchWeatherData, fetchForecastData } = useWeatherContext();
+  const { fetchWeatherData, fetchForecastData } = useWeatherContext();
+  const { isSearchOpen, setIsSearchOpen } = useStateContext();
+
   const [locationQuery, setLocationQuery] = useState('');
   const [locations, setLocations] = useState([]);
 
@@ -18,7 +23,7 @@ function WeatherSearchBox() {
   };
 
   const chooseLocation = (locationName = '') => {
-    setIsSearchBoxOpen(false);
+    setIsSearchOpen(false);
     setLocations([]);
     fetchWeatherData(locationName);
     fetchForecastData(locationName);
@@ -27,8 +32,8 @@ function WeatherSearchBox() {
   return (
     <>
       <Drawer
-        opened={isSearchBoxOpen}
-        onClose={() => setIsSearchBoxOpen(false)}
+        opened={isSearchOpen}
+        onClose={setIsSearchOpen}
         position='right'
         overlayProps={{ backgroundOpacity: 0.5, blur: 4 }}
         withCloseButton={false}

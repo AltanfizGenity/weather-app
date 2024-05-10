@@ -5,14 +5,16 @@ import { icon, weatherIcon } from '../data/IconData';
 import Icon from './Icon';
 import ForecastItem from './ForecastItem';
 import Temperature from './Temperature';
-import { useWeatherContext } from '../AppContainer';
+import { useWeatherContext } from '../context/WeatherContext';
+import { useStateContext } from '../context/StateContext';
 import '../styles/forecast.css';
 
 // Adjusting API | We using free tier
 const forecastDayRanges = [3, 5, 7];
 
 function ForecastBox() {
-  const { forecastData, isForecastBoxOpen, setIsForecastBoxOpen } = useWeatherContext();
+  const { forecastData } = useWeatherContext();
+  const { isForecastOpen, setIsForecastOpen } = useStateContext();
   const [forecastRange, setForecastRange] = useState(3);
 
   if (!forecastData) {
@@ -24,8 +26,8 @@ function ForecastBox() {
   return (
     <>
       <Drawer.Root
-        opened={isForecastBoxOpen}
-        onClose={setIsForecastBoxOpen}
+        opened={isForecastOpen}
+        onClose={setIsForecastOpen}
         position='right'
         id='forecast-box'
         className='drawer'
