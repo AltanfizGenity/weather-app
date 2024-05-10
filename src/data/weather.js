@@ -1,68 +1,25 @@
 import { conditionData } from './condition';
 
-/** This code need refactor or find better approach like create weather condition object data
- *  For now we use this for testing and mobility to finish the project
- */
+const windDirection = {
+  N: 'North',
+  NNE: 'North-northeast',
+  NE: 'Northeast',
+  ENE: 'East-northeast',
+  E: 'East',
+  ESE: 'East-southeast',
+  SE: 'Southeast',
+  SSE: 'South-southeast',
+  S: 'South',
+  SSW: 'South-southwest',
+  SW: 'Southwest',
+  WSW: 'West-southwest',
+  W: 'West',
+  WNW: 'West-northwest',
+  NW: 'Northwest',
+  NNW: 'North-northwest',
+};
 export function getWindDirection(windCode) {
-  let windDirection;
-  switch (windCode) {
-    case 'SW': {
-      windDirection = 'South West';
-      break;
-    }
-    case 'SE': {
-      windDirection = 'South East';
-      break;
-    }
-    case 'NW': {
-      windDirection = 'North West';
-      break;
-    }
-    case 'NE': {
-      windDirection = 'North East';
-      break;
-    }
-    case 'W': {
-      windDirection = 'West';
-      break;
-    }
-    case 'N': {
-      windDirection = 'North';
-      break;
-    }
-    case 'E': {
-      windDirection = 'East';
-      break;
-    }
-    case 'S': {
-      windDirection = 'South';
-      break;
-    }
-    case 'SSW': {
-      windDirection = 'South-southwest';
-      break;
-    }
-    case 'ENE': {
-      windDirection = 'East-northeast';
-      break;
-    }
-    case 'WSW': {
-      windDirection = 'West-south-west';
-      break;
-    }
-    case 'NNE': {
-      windDirection = 'North of north-east';
-      break;
-    }
-    case 'ESE': {
-      windDirection = 'East of south-east';
-      break;
-    }
-    default:
-      console.log(windCode);
-      windDirection = `code ${windCode} is not defined`;
-  }
-  return windDirection;
+  return windDirection[windCode];
 }
 
 /**
