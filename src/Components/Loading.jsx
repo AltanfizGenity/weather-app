@@ -1,9 +1,19 @@
 import React from 'react';
+import '../styles/loading.css';
 
 function Loading() {
   return (
     <div id='loading'>
-      <div>Loading....</div>
+      <Spinner />
+      <h3>Please wait...</h3>
+    </div>
+  );
+}
+
+function Spinner() {
+  return (
+    <div id='loader'>
+      <span></span>
     </div>
   );
 }
