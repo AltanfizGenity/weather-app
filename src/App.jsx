@@ -10,14 +10,11 @@ export const API_DATA = {
 };
 
 function App() {
-  const [image, setImage] = useState('');
-  const updateImage = (newImage) => setImage(newImage);
-
   return (
     <MantineProvider defaultColorScheme='dark'>
-      <BackgroundImage src={image}>
+      <BackgroundImage>
         <main id='weather-app'>
-          <AppContainer updateImage={updateImage} />
+          <AppContainer />
         </main>
       </BackgroundImage>
     </MantineProvider>
