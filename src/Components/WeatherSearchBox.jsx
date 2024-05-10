@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useRef, useState } from 'react';
 import { Drawer, Flex, TextInput } from '@mantine/core';
 import { SearchButton } from './Buttons';
 import LocationItem from './LocationItem';
@@ -12,19 +12,21 @@ function WeatherSearchBox() {
   const { fetchWeatherData, fetchForecastData } = useWeatherContext();
   const { isSearchOpen, setIsSearchOpen } = useStateContext();
 
-  const [locationQuery, setLocationQuery] = useState('');
+  const locationRef = useRef(null);
   const [locations, setLocations] = useState([]);
 
   const searchLocation = (evt) => {
     evt.preventDefault();
-    setLocationQuery('');
-    const searchedData = cities.filter((city) => city.name.toLowerCase().includes(locationQuery.toLowerCase()));
+    const searchedData = cities.filter((city) =>
+      city.name.toLowerCase().includes(locationRef.current.value.toLowerCase())
+    );
     setLocations(searchedData);
   };
 
   const chooseLocation = (locationName = '') => {
     setIsSearchOpen(false);
     setLocations([]);
+    locationRef.current.value = '';
     fetchWeatherData(locationName);
     fetchForecastData(locationName);
   };
@@ -43,13 +45,7 @@ function WeatherSearchBox() {
         <Flex direction={'column'} gap={'3rem'}>
           <form onSubmit={searchLocation}>
             <Flex align={'center'} gap={'lg'}>
-              <TextInput
-                placeholder='Search location'
-                flex={2}
-                value={locationQuery}
-                onChange={(evt) => setLocationQuery(evt.currentTarget.value)}
-                onSubmit={searchLocation}
-              />
+              <TextInput placeholder='Search location' flex={2} ref={locationRef} onSubmit={searchLocation} />
               <SearchButton onClick={searchLocation} />
             </Flex>
           </form>
