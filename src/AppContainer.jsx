@@ -6,22 +6,29 @@ import ForecastBox from './Components/ForecastBox.jsx';
 import Background from './Components/Background.jsx';
 import { Flex } from '@mantine/core';
 import WeatherContext from './context/WeatherContext.jsx';
-import StateContext from './context/StateContext.jsx';
+import { useStateContext } from './context/StateContext.jsx';
+import Loading from './Components/Loading.jsx';
 
 function AppContainer() {
   const [image, setImage] = useState('');
   const updateImage = (newImage) => setImage(newImage);
 
+  const { isLoading } = useStateContext();
+
   return (
     <Flex id='app-container' direction={'column'} h={'100%'}>
       <WeatherContext updateImage={updateImage}>
-        <StateContext>
-          <Navbar />
-          <WeatherSearchBox />
-          <Background src={image} />
-          <ForecastBox />
-          <Weather />
-        </StateContext>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <>
+            <Navbar />
+            <WeatherSearchBox />
+            <Background src={image} />
+            <ForecastBox />
+            <Weather />
+          </>
+        )}
       </WeatherContext>
     </Flex>
   );

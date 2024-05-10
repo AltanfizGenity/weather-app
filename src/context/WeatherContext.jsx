@@ -1,6 +1,7 @@
 import React, { createContext, useState, useContext, useCallback, useEffect, useMemo } from 'react';
 import { API_DATA } from '../App';
 import { getWeatherBackgroundImage } from '../data/weather';
+import { useStateContext } from './StateContext';
 
 export const Context = createContext(null);
 const initialLocation = 'Helsinki';
@@ -8,6 +9,7 @@ const initialLocation = 'Helsinki';
 function WeatherContext({ updateImage, children }) {
   const [weatherData, setWeatherData] = useState(null);
   const [forecastData, setForecastData] = useState(null);
+  const { setIsLoading } = useStateContext();
 
   const fetchWeatherData = useCallback(async (location) => {
     const currentUrl = 'https://api.weatherapi.com/v1/';
@@ -33,9 +35,19 @@ function WeatherContext({ updateImage, children }) {
     }
   });
 
+  const fetchData = useCallback(async (location) => {
+    setIsLoading(true);
+    try {
+      await Promise.all([fetchWeatherData(location), fetchForecastData(location)]);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+  });
+
   useEffect(() => {
-    fetchWeatherData(initialLocation);
-    fetchForecastData(initialLocation);
+    fetchData(initialLocation);
   }, []);
 
   const value = {
@@ -43,8 +55,7 @@ function WeatherContext({ updateImage, children }) {
     setWeatherData,
     forecastData,
     setForecastData,
-    fetchForecastData,
-    fetchWeatherData,
+    fetchData,
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

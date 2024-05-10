@@ -9,7 +9,7 @@ import cities from 'cities.json';
 export const weatherSearchContext = createContext(null);
 
 function WeatherSearchBox() {
-  const { fetchWeatherData, fetchForecastData } = useWeatherContext();
+  const { fetchData } = useWeatherContext();
   const { isSearchOpen, setIsSearchOpen } = useStateContext();
 
   const locationRef = useRef(null);
@@ -27,8 +27,7 @@ function WeatherSearchBox() {
     setIsSearchOpen(false);
     setLocations([]);
     locationRef.current.value = '';
-    fetchWeatherData(locationName);
-    fetchForecastData(locationName);
+    fetchData(locationName);
   };
 
   return (
