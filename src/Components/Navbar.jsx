@@ -14,7 +14,7 @@ function Navbar() {
         <Flex>
           <h1 style={{ fontSize: '1rem' }}>Weather.app</h1>
         </Flex>
-        <Flex id='navbar-controls' gap={'2rem'}>
+        <Flex id='navbar-controls' gap={'3rem'}>
           <SearchButton onClick={openSearchBox} />
           <ForecastButton onClick={openForecastBox} />
         </Flex>
