@@ -1,14 +1,10 @@
-import React from "react";
+import React from 'react';
 
-function Temperature({ temp_c, fontSize }) {
-  const temperatureStyle = {
-    fontSize: fontSize || "inherit", // Set fontSize to the value of fontSize prop or inherit if not provided
-  };
-
+function Temperature({ temp_c, className = '' }) {
   return (
-    <div className="temperature" style={temperatureStyle}>
+    <div className={`temperature ${className}`}>
       {temp_c}
-      <span className="degree" style={{ fontSize: `75%` }}>
+      <span className='degree' style={{ fontSize: `75%` }}>
         &deg;
       </span>
     </div>

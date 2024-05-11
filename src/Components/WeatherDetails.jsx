@@ -1,5 +1,4 @@
 import React from 'react';
-import { Flex } from '@mantine/core';
 import { weatherIcon } from '../data/IconData';
 import { useWeatherContext } from '../context/WeatherContext';
 
@@ -8,20 +7,20 @@ function WeatherDetails() {
   const { humidity, condition, wind_kph } = weatherData?.current || {};
 
   return (
-    <Flex align={'center'} justify={'center'} className='weather-details'>
-      <Flex className='detail' direction={'column'}>
+    <div id='weather-details'>
+      <div className='weather-detail'>
         {weatherIcon.humidity}
-        <p>{humidity}</p>
-      </Flex>
-      <Flex className='detail' direction={'column'}>
+        <p>{humidity}%</p>
+      </div>
+      <div className='weather-detail'>
         {weatherIcon.condition.PartlyCloudyIcon}
         <p>{condition?.text}</p>
-      </Flex>
-      <Flex className='detail' direction={'column'}>
+      </div>
+      <div className='weather-detail'>
         {weatherIcon.wind}
-        <p>{wind_kph}</p>
-      </Flex>
-    </Flex>
+        <p>{wind_kph}kph</p>
+      </div>
+    </div>
   );
 }
 

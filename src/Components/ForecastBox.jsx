@@ -36,15 +36,15 @@ function ForecastBox() {
         <Drawer.Content>
           <Drawer.Header>
             <Drawer.Title>
-              <Flex gap={'sm'} align={'center'}>
-                <Icon className='location-icon'>{icon.locationMarker}</Icon>
+              <Flex id='forecast-location' align={'center'}>
+                <Icon className='forecast-location-icon'>{icon.locationMarker}</Icon>
                 <div className='location-name'>{`${location.name}, ${location.country}`}</div>
               </Flex>
             </Drawer.Title>
             <Drawer.CloseButton />
           </Drawer.Header>
           <Drawer.Body>
-            <div className='forecast-body' style={{ marginTop: '1rem' }}>
+            <div id='forecast-body'>
               <ForecastCurrent current={current} />
               <Divider />
               <ForecastNext
@@ -68,12 +68,12 @@ function ForecastCurrent({ current }) {
 
   return (
     <Flex className='forecast-current' justify={'center'} align={'center'} direction={'column'} gap={'md'}>
-      <Temperature fontSize={'7rem'} temp_c={temp_c} />
+      <Temperature className='temp-md' temp_c={temp_c} />
       <Flex className='forecast-current-info' gap={'md'}>
         <div className='icon'>
           <Icon>{weatherIcon.wind}</Icon>
         </div>
-        <div className='info'>{`${windDirection}, ${wind_kph} km/h`}</div>
+        <div className='info'>{`${windDirection}, ${wind_kph} kph`}</div>
       </Flex>
     </Flex>
   );
@@ -82,7 +82,7 @@ function ForecastCurrent({ current }) {
 function ForecastNext(props) {
   const { forecast, setForecastRange, forecastRange } = props;
   return (
-    <Flex className='forecast-next' direction={'column'} gap={'lg'}>
+    <Flex id='forecast-next' direction={'column'}>
       <ForecastNextHeader setForecastRange={setForecastRange} forecastRange={forecastRange} />
       <ForecastNextContent {...{ forecast, forecastRange }} />
     </Flex>
@@ -91,11 +91,9 @@ function ForecastNext(props) {
 
 function ForecastNextHeader({ setForecastRange, forecastRange }) {
   return (
-    <Flex className='forecast-next-header' direction={'column'} gap={'sm'} justify={'center'} align={'center'}>
-      <Title className='forecast-next-title' order={3}>
-        The Next Days Forecast
-      </Title>
-      <Flex className='forecast-next-range' align={'center'} gap={'md'}>
+    <div id='forecast-next-header'>
+      <div id='forecast-next-title'>The Next Days Forecast</div>
+      <div id='forecast-next-range'>
         {forecastDayRanges.map((range, index) => {
           return (
             <Button
@@ -109,8 +107,8 @@ function ForecastNextHeader({ setForecastRange, forecastRange }) {
             </Button>
           );
         })}
-      </Flex>
-    </Flex>
+      </div>
+    </div>
   );
 }
 

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './styles/app.css';
 import './styles/mantine-override.css';
 import '@mantine/core/styles.css';
-import { BackgroundImage, MantineProvider } from '@mantine/core';
+import { MantineProvider } from '@mantine/core';
 import AppContainer from './AppContainer.jsx';
 import StateContext from './context/StateContext.jsx';
 
@@ -13,13 +13,11 @@ export const API_DATA = {
 function App() {
   return (
     <MantineProvider defaultColorScheme='dark'>
-      <BackgroundImage>
-        <main id='weather-app'>
-          <StateContext>
-            <AppContainer />
-          </StateContext>
-        </main>
-      </BackgroundImage>
+      <main id='weather-app'>
+        <StateContext>
+          <AppContainer />
+        </StateContext>
+      </main>
     </MantineProvider>
   );
 }

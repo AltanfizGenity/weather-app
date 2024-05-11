@@ -32,29 +32,39 @@ function WeatherSearchBox() {
 
   return (
     <>
-      <Drawer
-        opened={isSearchOpen}
-        onClose={setIsSearchOpen}
-        position='right'
-        overlayProps={{ backgroundOpacity: 0.5, blur: 4 }}
-        withCloseButton={false}
-        className='drawer search-box'
-        px={'lg'}
-      >
-        <Flex direction={'column'} gap={'3rem'}>
-          <form onSubmit={searchLocation}>
-            <Flex align={'center'} gap={'lg'}>
-              <TextInput placeholder='Search location' flex={2} ref={locationRef} onSubmit={searchLocation} />
-              <SearchButton onClick={searchLocation} />
+      <Drawer.Root opened={isSearchOpen} onClose={setIsSearchOpen} position='right' id='search-box' className='drawer'>
+        <Drawer.Overlay />
+        <Drawer.Content id='searchbox-content'>
+          <Drawer.Header>
+            <h5>Search location</h5>
+            <Drawer.CloseButton id='close-search-btn' />
+          </Drawer.Header>
+          <Drawer.Body>
+            <Flex direction={'column'} gap={'3rem'}>
+              <div id='search-header'>
+                <form id='search-form' onSubmit={searchLocation}>
+                  <TextInput
+                    id='search-input'
+                    placeholder='Ex: London, Jakarta, etc...'
+                    ref={locationRef}
+                    onSubmit={searchLocation}
+                  />
+                  <SearchButton onClick={searchLocation} />
+                </form>
+              </div>
+              <Flex className='search-result' direction={'column'}>
+                {locations.map((location, index) => (
+                  <LocationItem
+                    locationName={location.name}
+                    key={index}
+                    onClick={() => chooseLocation(location.name)}
+                  />
+                ))}
+              </Flex>
             </Flex>
-          </form>
-          <Flex className='search-result' direction={'column'}>
-            {locations.map((location, index) => (
-              <LocationItem locationName={location.name} key={index} onClick={() => chooseLocation(location.name)} />
-            ))}
-          </Flex>
-        </Flex>
-      </Drawer>
+          </Drawer.Body>
+        </Drawer.Content>
+      </Drawer.Root>
     </>
   );
 }

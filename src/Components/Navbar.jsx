@@ -1,4 +1,3 @@
-import { Flex } from '@mantine/core';
 import React from 'react';
 import { ForecastButton, SearchButton } from './Buttons';
 import { useStateContext } from '../context/StateContext';
@@ -10,15 +9,13 @@ function Navbar() {
 
   return (
     <nav id='navbar'>
-      <Flex justify={'space-between'} align={'center'}>
-        <Flex>
-          <h1 style={{ fontSize: '1rem' }}>Weather.app</h1>
-        </Flex>
-        <Flex id='navbar-controls' gap={'3rem'}>
-          <SearchButton onClick={openSearchBox} />
-          <ForecastButton onClick={openForecastBox} />
-        </Flex>
-      </Flex>
+      <div id='navbar-title'>
+        <h1>Weather.app</h1>
+      </div>
+      <div id='navbar-controls'>
+        <SearchButton onClick={openSearchBox} />
+        <ForecastButton onClick={openForecastBox} />
+      </div>
     </nav>
   );
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import { getCurrentDate } from '../utils/date';
-import { Flex } from '@mantine/core';
 import Temperature from './Temperature';
 import WeatherDetails from './WeatherDetails';
 import { useWeatherContext } from '../context/WeatherContext';
@@ -11,14 +10,16 @@ function Weather() {
   const { name } = weatherData?.location ?? {};
 
   return (
-    <Flex id='weather' justify={'space-between'} align={'flex-end'} h={'100%'}>
-      <Flex direction={'column'}>
-        <Temperature fontSize={'15rem'} {...{ temp_c }} />
-        <div className='location'>{name}</div>
-        <div className='weather-date'>{getCurrentDate()}</div>
-      </Flex>
+    <div id='weather'>
+      <div id='weather-info'>
+        <Temperature className='main-weather-temperature' {...{ temp_c }} />
+        <div id='weather-desc'>
+          <div id='weather-location'>{name}</div>
+          <div id='weather-date'>{getCurrentDate()}</div>
+        </div>
+      </div>
       <WeatherDetails />
-    </Flex>
+    </div>
   );
 }
 

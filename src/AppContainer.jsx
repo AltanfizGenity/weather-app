@@ -16,21 +16,21 @@ function AppContainer() {
   const { isLoading } = useStateContext();
 
   return (
-    <Flex id='app-container' direction={'column'} h={'100%'}>
+    <div id='app-container'>
       <WeatherContext updateImage={updateImage}>
         {isLoading ? (
           <Loading />
         ) : (
           <>
+            <Background src={image} />
             <Navbar />
             <WeatherSearchBox />
-            <Background src={image} />
             <ForecastBox />
             <Weather />
           </>
         )}
       </WeatherContext>
-    </Flex>
+    </div>
   );
 }
 

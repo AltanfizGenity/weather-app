@@ -1,10 +1,231 @@
+:root {
+  --titleSM: 0.8rem;
+  --mainTempSM: 7rem;
+  --tempMD: 4rem;
+  --tempSM: 1.5rem;
+  --flexGapSM: 1.5rem;
+  --weatherContentGapSM: 2rem;
+  --iconBtnSM: 1.2rem;
+  --iconSM: 1.5rem;
+  --weatherLocationSM: 1.5rem;
+  --titleLG: 2rem;
+
+  --secondaryTextCol: #909090;
+  --secondaryLightTextCol: #aaa;
+}
+
 body {
   line-height: normal;
 }
 
+/* Root */
 #weather-app {
+  position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
+}
+
+/* Container */
+#app-container {
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar */
+#navbar {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#navbar-title h1 {
+  font-size: var(--titleSM);
+  color: #fff;
+}
+
+#navbar-controls {
+  display: flex;
+  gap: var(--flexGapSM);
+  align-items: center;
+}
+
+.icon-btn {
+  width: var(--iconBtnSM);
+  height: var(--iconBtnSM);
+  cursor: pointer;
+  color: #fff;
+}
+
+/* Weather */
+#weather {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#weather-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Temperature */
+
+.main-weather-temperature {
+  font-size: var(--mainTempSM);
+}
+
+.temp-md {
+  font-size: var(--tempMD);
+}
+
+.temp-sm {
+  font-size: var(--tempSM);
+}
+
+#weather-desc {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+#weather-location {
+  font-size: var(--weatherLocationSM);
+  font-weight: bold;
+}
+
+#weather-date {
+  color: var(--secondaryTextCol);
+}
+
+/* align={'center'} justify={'center'} */
+
+#weather-details {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0 1rem;
+}
+
+.weather-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.weather-detail svg {
+  width: var(--iconSM);
+  height: var(--iconSM);
+}
+
+.weather-detail p {
+  color: var(--secondaryLightTextCol);
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+/* Temperature */
+.temperature {
+  position: relative;
+}
+
+.temperature .degree {
+  position: absolute;
+}
+
+/* Mantine Drawer */
+
+.mantine-Drawer-content {
+  display: flex !important;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 1.5rem;
+}
+
+/* Forecast */
+
+#forecast-location {
+  gap: 0.5rem;
+}
+
+.icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+#forecast-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--weatherContentGapSM);
+}
+
+#forecast-next {
+  gap: var(--weatherContentGapSM);
+}
+
+#forecast-next-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+#forecast-next-range {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.forecast-next-title {
+  font-size: 1rem;
+  text-align: center;
+}
+
+.location-item {
+  cursor: pointer;
+}
+
+/* Searchbox */
+
+#searchbox-content {
+  gap: 1rem;
+}
+
+#search-header {
+  width: 100%;
+}
+
+#search-form {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  width: 100%;
+}
+
+.mantine-InputWrapper-root {
+  width: 100%;
+}
+
+@media (width > 640px) {
+  /* DESKTOP VERSION */
+  /* #weather-app {
+  width: 100%;
+  height: 100dvh;
   padding: 5rem 7rem;
 }
 
@@ -15,14 +236,6 @@ body {
 
 #navbar h1 {
   color: #fff;
-}
-
-.temperature {
-  position: relative;
-}
-
-.temperature .degree {
-  position: absolute;
 }
 
 .location {
@@ -48,15 +261,6 @@ body {
   height: 30px;
 }
 
-.icon-btn {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-}
-
-.icon-btn:hover {
-  color: #fff;
-}
 
 .mantine-Drawer-content {
   padding: 2.5rem;
@@ -75,15 +279,7 @@ body {
 .location-item:hover {
   background-color: rgba(255, 255, 255, 0.1);
   color: #ffffff;
-}
-
-.icon {
-  width: 24px;
-  height: 24px;
-}
-
-.icon svg {
-  width: 24px;
+}*/
 }
 
 /* Background */
@@ -91,8 +287,8 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100dvw;
+  height: 100dvh;
   background-position: center;
   background-size: cover;
   z-index: -99;
@@ -103,7 +299,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100dvw;
+  height: 100dvh;
   background-color: rgba(0, 0, 0, 0.5);
 }
