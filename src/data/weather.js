@@ -1,4 +1,4 @@
-import { conditionData } from './condition';
+import { conditionData, iconConditionData } from './data.js';
 
 const windDirection = {
   N: 'North',
@@ -45,4 +45,30 @@ export function getWeatherBackgroundImage(condition) {
   if (!image) throw new Error("Can't found the image for condition code, check condition data instead");
 
   return image;
+}
+
+/**
+ *
+ * @param {Object} condition
+ * @returns Object that contains icon data
+ */
+export function getWeatherConditionIcon(condition) {
+  let iconData;
+
+  if (!condition) {
+    return;
+  }
+
+  const { code } = condition;
+
+  iconConditionData.forEach((conditionItem) => {
+    if (code === conditionItem.code) {
+      iconData = conditionItem;
+      return;
+    }
+  });
+
+  if (!iconData) throw new Error("Can't found icon data for condition code, check condition data instead");
+
+  return iconData;
 }
