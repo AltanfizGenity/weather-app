@@ -5,6 +5,8 @@ import LocationItem from './LocationItem';
 import { useWeatherContext } from '../context/WeatherContext';
 import { useStateContext } from '../context/StateContext';
 import cities from 'cities.json';
+import Icon from './Icon';
+import { icon } from '../data/IconData';
 
 export const weatherSearchContext = createContext(null);
 
@@ -53,19 +55,32 @@ function WeatherSearchBox() {
                 </form>
               </div>
               <Flex className='search-result' direction={'column'}>
-                {locations.map((location, index) => (
-                  <LocationItem
-                    locationName={location.name}
-                    key={index}
-                    onClick={() => chooseLocation(location.name)}
-                  />
-                ))}
+                {locations.length > 0 ? (
+                  locations.map((location, index) => (
+                    <LocationItem
+                      locationName={location.name}
+                      key={index}
+                      onClick={() => chooseLocation(location.name)}
+                    />
+                  ))
+                ) : (
+                  <LocationFallback />
+                )}
               </Flex>
             </Flex>
           </Drawer.Body>
         </Drawer.Content>
       </Drawer.Root>
     </>
+  );
+}
+
+function LocationFallback() {
+  return (
+    <div className='location-fallback'>
+      <Icon>{icon.locationMarker}</Icon>
+      <p>No location has found yet</p>
+    </div>
   );
 }
 
