@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 import Navbar from './Components/Navbar';
 import Weather from './Components/Weather';
-import WeatherSearchBox from './Components/WeatherSearchBox.jsx';
-import ForecastBox from './Components/ForecastBox.jsx';
 import Background from './Components/Background.jsx';
-import { Flex } from '@mantine/core';
 import WeatherContext from './context/WeatherContext.jsx';
 import { useStateContext } from './context/StateContext.jsx';
 import Loading from './Components/Loading.jsx';
+
+const WeatherSearchBox = lazy(() => import('./Components/WeatherSearchBox.jsx'));
+const ForecastBox = lazy(() => import('./Components/ForecastBox.jsx'));
 
 function AppContainer() {
   const [image, setImage] = useState('');
@@ -24,8 +24,10 @@ function AppContainer() {
           <>
             <Background src={image} />
             <Navbar />
-            <WeatherSearchBox />
-            <ForecastBox />
+            <Suspense fallback={<Loading text='Load features...' />}>
+              <WeatherSearchBox />
+              <ForecastBox />
+            </Suspense>
             <Weather />
           </>
         )}

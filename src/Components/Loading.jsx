@@ -1,11 +1,11 @@
 import React from 'react';
 import '../styles/loading.css';
 
-function Loading() {
+function Loading({ text = '' }) {
   return (
     <div id='loading'>
       <Spinner />
-      <h3>Please wait...</h3>
+      <h3 id='loading-text'>{text || 'Please wait...'}</h3>
     </div>
   );
 }
