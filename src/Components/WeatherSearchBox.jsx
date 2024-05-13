@@ -17,9 +17,9 @@ function WeatherSearchBox() {
 
   const searchLocation = (evt) => {
     evt.preventDefault();
-    const searchedData = cities.filter((city) =>
-      city.name.toLowerCase().includes(locationRef.current.value.toLowerCase())
-    );
+    const searchedData = cities
+      .filter((city) => city.name.toLowerCase().includes(locationRef.current.value.toLowerCase().trim()))
+      .slice(0, 15);
     setLocations(searchedData);
   };
 
