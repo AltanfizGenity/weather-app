@@ -1,7 +1,6 @@
 import React from 'react';
 import { weatherIcon } from '../data/IconData';
 import { useWeatherContext } from '../context/WeatherContext';
-import { iconConditionData } from '../data/data';
 import { getWeatherConditionIcon } from '../data/weather';
 
 function WeatherDetails() {

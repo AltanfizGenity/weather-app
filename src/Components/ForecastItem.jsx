@@ -1,6 +1,4 @@
 import React from 'react';
-import { icon } from '../data/IconData';
-
 import Temperature from './Temperature';
 import { getDateString } from '../utils/date';
 import { getWeatherConditionIcon } from '../data/weather';

@@ -22,6 +22,7 @@ This style is to override exiting Mantine stylesheet for custom styling WeatherA
 }
 
 .mantine-Drawer-header {
+  position: relative !important;
   background: transparent !important;
 }
 
